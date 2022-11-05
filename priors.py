@@ -43,7 +43,7 @@ if __name__ == '__main__':
                                             f'{config["version"]}', 'average_4.nii.gz'))
 
     transformations = []
-    for i in range(10):
+    for i in range(len(segmentations)):
         transformations.append(sitk.ReadTransform(os.path.join(config['registration_input_folder'],
                                                                f'{config["version"]}',
                                                                f'transformation_{i}.tfm')))

@@ -130,7 +130,6 @@ class GMM:
             loss = self.nll((likelihood_per_class * self.weights).sum(axis=-1, keepdims=True))
             scores.append(loss)
             if i > 0 and abs(scores[-1] - scores[-2]) < self.tol:
-                print('Convergence achieved')
                 break
 
         prob_map = np.zeros((*image.shape, self.n_components))

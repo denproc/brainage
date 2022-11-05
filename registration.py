@@ -49,9 +49,9 @@ if __name__ == '__main__':
     ##### Save the average images to disk
     for i, img in enumerate(averages):
         sitk.WriteImage(img, os.path.join(config['output_folder'],
-                                          f'{config["version"]}', f'nl001_average_{i}.nii.gz'))
+                                          f'{config["version"]}', f'average_{i}.nii.gz'))
 
         # Save the transformations to disk
     for i, transform in enumerate(trans):
         sitk.WriteTransform(transform, os.path.join(config['output_folder'],
-                                                    f'{config["version"]}', f'nl001_transformation_{i}.tfm'))
+                                                    f'{config["version"]}', f'transformation_{i}.tfm'))

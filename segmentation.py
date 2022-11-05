@@ -6,7 +6,7 @@ import numpy as np
 
 config = {
     'version': 50,
-    'input_folder': './data/unsegmented',
+    'input_folder': './data/input/unsegmented',
     'segmentation_prior_input_folder': './data/output/segmentation_priors',
     'output_folder': './data/output/segmentations'
 }
@@ -20,11 +20,9 @@ if __name__ == '__main__':
 
     for index, file_name in enumerate(sorted(glob.glob(os.path.join(config['input_folder'], '*.nii.gz')))):
         unsegmented_image = sitk.ReadImage(file_name, sitk.sitkFloat32)
-        print(file_name)
         for key in segmentation_keys:
             file_name_prior = os.path.join(config['segmentation_prior_input_folder'],
                                            f'{config["version"]}', f'{index}', f'{key}.nii.gz')
-            print(file_name_prior)
             priors[key] = sitk.GetArrayFromImage(sitk.ReadImage(file_name_prior, sitk.sitkFloat32))
         priors['bg'] = 1 - (priors['csf'] + priors['gm'] + priors['wm'])
 
