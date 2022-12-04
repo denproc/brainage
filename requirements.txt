@@ -1,3 +1,7 @@
 numpy
 scipy
 SimpleITK
+scikit-learn
+matplotlib
+jupyterlab
+torch
